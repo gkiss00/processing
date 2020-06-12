@@ -1,13 +1,13 @@
 import peasy.*;
 
-Ring ring = new Ring(200, 20);
+Ring ring = new Ring(400, 40);
 
 PeasyCam cam;
 
 void setup(){
-  size(600, 600, P3D);
+  size(900, 900, P3D);
   
-  cam = new PeasyCam(this, width/2, height/2, 0, 500);
+  cam = new PeasyCam(this, width/2, height/2, 0, 1000);
 }
 
 void draw(){
