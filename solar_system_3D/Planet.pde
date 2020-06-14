@@ -1,7 +1,6 @@
 class Planet {
    float ray;
    int precision;
-   PVector pos;
    PVector[][] points;
    float speed;
    float orbit;
@@ -9,10 +8,9 @@ class Planet {
    float angle = 0;
    boolean ring;
    
-   Planet(float x, float y, float z, float r, int _precision, float _orbit, float _speed, float red, float green, float blue, boolean _ring){
+   Planet(float r, int _precision, float _orbit, float _speed, float red, float green, float blue, boolean _ring){
       ray = r;
       precision = _precision;
-      pos = new PVector(x, y, z);
       points = new PVector[precision + 1][precision + 1];
       orbit = _orbit;
       speed = _speed;
@@ -30,9 +28,9 @@ class Planet {
          yr = 0;
          zr = orbit * sin(2 * PI * angle / 360);
          float x, y, z;
-         x = xr + pos.x + ((ray) * cos(lon) * cos(lat));
-         y = yr + pos.y + ((ray) * sin(lon) * cos(lat));
-         z = zr + pos.z + ((ray) * sin(lat));
+         x = xr + ((ray) * cos(lon) * cos(lat));
+         y = yr + ((ray) * sin(lon) * cos(lat));
+         z = zr + ((ray) * sin(lat));
          points[i][j] = new PVector(x, y, z);
        }
      }
@@ -69,11 +67,11 @@ class Planet {
        fill(colors.x / (nb_circle / 3), colors.y / (nb_circle / 3), colors.z / (nb_circle / 3));
        stroke(colors.x / 1.1 / (nb_circle / 3), colors.z / 1.1 / (nb_circle / 3), colors.z / 1.1 / (nb_circle / 3));
        beginShape(TRIANGLE_STRIP);
-       for (int i = 0; i < 360; ++i){
+       for (int i = 0; i < 361; ++i){
          float x, y, z;
          x = xr  + ((ray + 5 + nb_circle) * cos(2 * PI  * i / 360));
          y = 0;
-         z = zr + pos.z + ((ray + 5 + nb_circle) * sin(2 * PI  * i / 360));
+         z = zr + ((ray + 5 + nb_circle) * sin(2 * PI  * i / 360));
          vertex(x, y, z);
        }
        endShape();
