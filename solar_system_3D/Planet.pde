@@ -64,13 +64,16 @@ class Planet {
      yr = 0;
      zr = orbit * sin(2 * PI * angle / 360);
      for (int nb_circle = 1; nb_circle < 10; ++nb_circle){
-       fill(colors.x / (nb_circle / 3), colors.y / (nb_circle / 3), colors.z / (nb_circle / 3));
-       stroke(colors.x / 1.1 / (nb_circle / 3), colors.z / 1.1 / (nb_circle / 3), colors.z / 1.1 / (nb_circle / 3));
+       float ratio = (nb_circle / 3);
+       fill(colors.x / ratio, colors.y / ratio, colors.z / ratio);
+       stroke(colors.x / 1.1 / ratio, colors.z / 1.1 / ratio, colors.z / 1.1 / ratio);
        beginShape(TRIANGLE_STRIP);
        for (int i = 0; i < 361; ++i){
          float x, y, z;
          x = xr  + ((ray + 5 + nb_circle) * cos(2 * PI  * i / 360));
-         y = 0;
+
+           y = map((cos(2 * PI  * i / 360)) , -1, 1, 18, -18);
+
          z = zr + ((ray + 5 + nb_circle) * sin(2 * PI  * i / 360));
          vertex(x, y, z);
        }
