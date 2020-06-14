@@ -71,9 +71,7 @@ class Planet {
        for (int i = 0; i < 361; ++i){
          float x, y, z;
          x = xr  + ((ray + 5 + nb_circle) * cos(2 * PI  * i / 360));
-
-           y = map((cos(2 * PI  * i / 360)) , -1, 1, 18, -18);
-
+         y = map((cos(2 * PI  * i / 360)) , -1, 1, 18, -18);
          z = zr + ((ray + 5 + nb_circle) * sin(2 * PI  * i / 360));
          vertex(x, y, z);
        }
