@@ -1,3 +1,5 @@
+float speed = 0;
+
 float c_real = 0;
 float c_imag= 0;
 
@@ -66,8 +68,8 @@ void draw() {
         float bb = b * b;
         float twoab = 2.0 * a * b;
         
-        a = aa - bb + tmp1[(int)nb];
-        b = twoab + tmp2[(int)nb];
+        a = aa - bb + tmp1[(int)nb] + speed;
+        b = twoab + tmp2[(int)nb] - speed;
         if (aa * aa + bb * bb > 16.0)
           break;
         ++n;
@@ -82,10 +84,11 @@ void draw() {
     y += dy;
   }
   updatePixels();
-  println(frameRate);
+  speed += 0.0005;
 }
 
 void mousePressed() {
+  speed = 0;
   ++nb;
   nb = nb % 10;
 }
